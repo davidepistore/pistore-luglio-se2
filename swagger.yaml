@@ -73,7 +73,24 @@ paths:
           description: unexpected error
           schema:
             $ref: '#/definitions/Error'
-                    
+  /team/{id}:
+    get:
+      operationId: getTeambyId
+      summary: ottieni una squadra dato un id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: team trovato
+          schema:
+            $ref: '#/definitions/Team'
+        404:
+          description: team non trovato
+          schema:
+            $ref: '#/definitions/Error'
   
 definitions:
   Team:
