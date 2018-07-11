@@ -1,0 +1,22 @@
+{
+  "name": "luglio-se2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidepistore/pistore-luglio-se2.git"
+  },
+  "author": "davide\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[ Pistore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidepistore/pistore-luglio-se2/issues"
+  },
+  "homepage": "https://github.com/davidepistore/pistore-luglio-se2#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
