@@ -1,0 +1,131 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: "pistore-luglio-se2"
+  description: informazioni mondiali
+  license:
+    name: MIT
+    url: https://github.com/apiaryio/polls-api/blob/master/LICENSE
+host: polls.apiblueprint.org
+basePath: /
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /match:
+    get:
+      operationId: getMatches
+      summary: ottieni lista match
+      responses:
+        200:
+          description: Successful Response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Match'
+    post:
+      operationId: addMatch
+      summary: inserisci un match
+      parameters:
+        - name: match
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/NewMatch'
+      responses:
+        201:
+          description: match creato
+          schema:
+            $ref: '#/definitions/Match'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /team:
+    get:
+      operationId: getTeams
+      summary: ottieni lista squadre
+      responses:
+        200:
+          description: Successful Response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Team'
+    post:
+      operationId: addTeam
+      summary: inserisci una squadra
+      parameters:
+        - name: team
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/NewTeam'
+      responses:
+        201:
+          description: team creato
+          schema:
+            $ref: '#/definitions/Team'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+                    
+  
+definitions:
+  Team:
+    allOf:
+      - $ref: '#/definitions/NewTeam'
+      - required:
+        - id
+        properties:
+          id:
+            type: array
+            items:
+              $ref: '#/definitions/Match'
+  NewTeam:
+    required:
+      - id
+      - name
+      - is_still_in
+      - matches
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      is_still_in:
+        type: boolean
+      matches:
+        type: array
+
+  Match:
+    allOf:
+      - $ref: '#/definitions/NewMatch'
+      - required:
+        - id
+        properties:
+          id:
+            type: string
+  NewMatch:
+    required:
+      - opponent
+      - outcome
+    properties:
+      opponent:
+        type: string
+      outcome:
+        type: string
+  Error:
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
